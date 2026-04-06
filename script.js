@@ -40,7 +40,112 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ========== МОДАЛЬНОЕ ОКНО ДЛЯ ЦЕН ==========
+// ========== КАРУСЕЛЬ УСЛУГ ==========
+const servicesCarousel = document.getElementById('servicesCarousel');
+const servicesPrevBtn = document.getElementById('servicesPrev');
+const servicesNextBtn = document.getElementById('servicesNext');
+const servicesDotsContainer = document.getElementById('servicesDots');
+
+let servicesCurrentIndex = 0;
+let servicesTotalItems = 0;
+let servicesItemWidth = 0;
+
+function updateServicesCarousel() {
+    if (!servicesCarousel) return;
+    
+    const scrollAmount = servicesCurrentIndex * (servicesItemWidth + 30);
+    servicesCarousel.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth'
+    });
+    
+    updateServicesDots();
+    updateServicesButtons();
+}
+
+function updateServicesDots() {
+    if (!servicesDotsContainer) return;
+    
+    const items = document.querySelectorAll('.service-item');
+    servicesTotalItems = items.length;
+    servicesItemWidth = items[0]?.offsetWidth || 300;
+    
+    if (servicesDotsContainer.children.length === 0) {
+        for (let i = 0; i < servicesTotalItems; i++) {
+            const dot = document.createElement('span');
+            dot.classList.add('services-dot');
+            dot.addEventListener('click', () => {
+                servicesCurrentIndex = i;
+                updateServicesCarousel();
+            });
+            servicesDotsContainer.appendChild(dot);
+        }
+    }
+    
+    const dots = document.querySelectorAll('.services-dot');
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === servicesCurrentIndex);
+    });
+}
+
+function updateServicesButtons() {
+    if (!servicesCarousel) return;
+    
+    const maxScroll = servicesCarousel.scrollWidth - servicesCarousel.clientWidth;
+    const currentScroll = servicesCarousel.scrollLeft;
+    
+    if (servicesPrevBtn) {
+        servicesPrevBtn.classList.toggle('disabled', currentScroll <= 5);
+    }
+    if (servicesNextBtn) {
+        servicesNextBtn.classList.toggle('disabled', currentScroll >= maxScroll - 5);
+    }
+}
+
+if (servicesNextBtn) {
+    servicesNextBtn.addEventListener('click', () => {
+        if (servicesCurrentIndex < servicesTotalItems - 1) {
+            servicesCurrentIndex++;
+            updateServicesCarousel();
+        }
+    });
+}
+
+if (servicesPrevBtn) {
+    servicesPrevBtn.addEventListener('click', () => {
+        if (servicesCurrentIndex > 0) {
+            servicesCurrentIndex--;
+            updateServicesCarousel();
+        }
+    });
+}
+
+if (servicesCarousel) {
+    servicesCarousel.addEventListener('scroll', () => {
+        const scrollPos = servicesCarousel.scrollLeft;
+        const newIndex = Math.round(scrollPos / (servicesItemWidth + 30));
+        if (newIndex !== servicesCurrentIndex && !isNaN(newIndex)) {
+            servicesCurrentIndex = newIndex;
+            updateServicesDots();
+        }
+        updateServicesButtons();
+    });
+    
+    window.addEventListener('resize', () => {
+        setTimeout(() => {
+            servicesItemWidth = document.querySelector('.service-item')?.offsetWidth || 300;
+            updateServicesCarousel();
+            updateServicesDots();
+        }, 100);
+    });
+}
+
+setTimeout(() => {
+    updateServicesDots();
+    updateServicesButtons();
+}, 100);
+
+// ========== МОДАЛЬНОЕ ОКНО ДЛЯ ЦЕН (ПРОСТОЙ СПИСОК) ==========
 const priceModal = document.getElementById('priceModal');
 const modalContent = document.getElementById('modalPriceContent');
 const closeModalBtn = document.getElementById('closeModalBtn');
@@ -167,19 +272,14 @@ const priceData = {
     }
 };
 
-// Функция создания HTML для прайса с каруселью
 function buildPriceHTML(serviceType) {
     const data = priceData[serviceType];
     if (!data) return '<p>Информация временно недоступна</p>';
     
     let html = `<h2>${data.title}</h2>`;
-    html += `<div class="price-carousel-container">`;
-    html += `<button class="carousel-arrow prev"><i class="fas fa-chevron-left"></i></button>`;
-    html += `<div class="price-carousel">`;
-    html += `<div class="price-carousel-track">`;
     
-    data.categories.forEach((category, idx) => {
-        html += `<div class="price-slide" data-slide="${idx}">`;
+    data.categories.forEach(category => {
+        html += `<div class="price-category">`;
         html += `<h3>${category.name}</h3>`;
         html += `<div class="price-list">`;
         category.items.forEach(item => {
@@ -195,85 +295,10 @@ function buildPriceHTML(serviceType) {
         html += `</div>`;
     });
     
-    html += `</div>`;
-    html += `</div>`;
-    html += `<button class="carousel-arrow next"><i class="fas fa-chevron-right"></i></button>`;
-    html += `</div>`;
-    html += `<div class="price-dots"></div>`;
     html += `<div class="price-info"><i class="fas fa-info-circle"></i> ${data.info}</div>`;
     html += `<button class="btn-primary price-book-btn" onclick="document.getElementById('priceModal').style.display='none'; document.getElementById('contact').scrollIntoView({behavior:'smooth'});">Записаться</button>`;
     
     return html;
-}
-
-// Переменные для карусели ПРАЙСА (в модалке)
-let priceCarouselTrack = null;
-let priceCurrentSlide = 0;
-let priceTotalSlides = 0;
-let priceDotsContainer = null;
-
-function initPriceCarousel() {
-    priceCarouselTrack = document.querySelector('.price-carousel-track');
-    const slides = document.querySelectorAll('.price-slide');
-    const prevBtn = document.querySelector('.carousel-arrow.prev');
-    const nextBtn = document.querySelector('.carousel-arrow.next');
-    priceDotsContainer = document.querySelector('.price-dots');
-    
-    if (!priceCarouselTrack || slides.length === 0) return;
-    
-    priceTotalSlides = slides.length;
-    priceCurrentSlide = 0;
-    
-    // Создаём точки
-    if (priceDotsContainer) {
-        priceDotsContainer.innerHTML = '';
-        for (let i = 0; i < priceTotalSlides; i++) {
-            const dot = document.createElement('span');
-            dot.classList.add('price-dot');
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToPriceSlide(i));
-            priceDotsContainer.appendChild(dot);
-        }
-    }
-    
-    function updatePriceCarousel() {
-        const slideWidth = slides[0]?.offsetWidth || 0;
-        priceCarouselTrack.style.transform = `translateX(-${priceCurrentSlide * slideWidth}px)`;
-        
-        document.querySelectorAll('.price-dot').forEach((dot, i) => {
-            dot.classList.toggle('active', i === priceCurrentSlide);
-        });
-    }
-    
-    function goToPriceSlide(index) {
-        if (index < 0) index = 0;
-        if (index >= priceTotalSlides) index = priceTotalSlides - 1;
-        priceCurrentSlide = index;
-        updatePriceCarousel();
-    }
-    
-    if (prevBtn) {
-        prevBtn.onclick = () => {
-            if (priceCurrentSlide > 0) {
-                priceCurrentSlide--;
-                updatePriceCarousel();
-            }
-        };
-    }
-    if (nextBtn) {
-        nextBtn.onclick = () => {
-            if (priceCurrentSlide < priceTotalSlides - 1) {
-                priceCurrentSlide++;
-                updatePriceCarousel();
-            }
-        };
-    }
-    
-    window.addEventListener('resize', () => {
-        updatePriceCarousel();
-    });
-    
-    updatePriceCarousel();
 }
 
 // Открытие модального окна
@@ -287,7 +312,6 @@ if (serviceItems.length) {
                 modalContent.innerHTML = buildPriceHTML(serviceType);
                 priceModal.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
-                setTimeout(initPriceCarousel, 50);
             }
         });
     });
@@ -314,111 +338,6 @@ document.addEventListener('keydown', (e) => {
         document.body.style.overflow = 'auto';
     }
 });
-
-// ========== КАРУСЕЛЬ УСЛУГ (ГОРИЗОНТАЛЬНАЯ) ==========
-const servicesCarousel = document.getElementById('servicesCarousel');
-const servicesPrevBtn = document.getElementById('servicesPrev');
-const servicesNextBtn = document.getElementById('servicesNext');
-const servicesDotsContainer = document.getElementById('servicesDots');
-
-let servicesCurrentIndex = 0;
-let servicesTotalItems = 0;
-let servicesItemWidth = 0;
-
-function updateServicesCarousel() {
-    if (!servicesCarousel) return;
-    
-    const scrollAmount = servicesCurrentIndex * (servicesItemWidth + 30);
-    servicesCarousel.scrollTo({
-        left: scrollAmount,
-        behavior: 'smooth'
-    });
-    
-    updateServicesDots();
-    updateServicesButtons();
-}
-
-function updateServicesDots() {
-    if (!servicesDotsContainer) return;
-    
-    const items = document.querySelectorAll('.service-item');
-    servicesTotalItems = items.length;
-    servicesItemWidth = items[0]?.offsetWidth || 320;
-    
-    if (servicesDotsContainer.children.length === 0) {
-        for (let i = 0; i < servicesTotalItems; i++) {
-            const dot = document.createElement('span');
-            dot.classList.add('services-dot');
-            dot.addEventListener('click', () => {
-                servicesCurrentIndex = i;
-                updateServicesCarousel();
-            });
-            servicesDotsContainer.appendChild(dot);
-        }
-    }
-    
-    const dots = document.querySelectorAll('.services-dot');
-    dots.forEach((dot, i) => {
-        dot.classList.toggle('active', i === servicesCurrentIndex);
-    });
-}
-
-function updateServicesButtons() {
-    if (!servicesCarousel) return;
-    
-    const maxScroll = servicesCarousel.scrollWidth - servicesCarousel.clientWidth;
-    const currentScroll = servicesCarousel.scrollLeft;
-    
-    if (servicesPrevBtn) {
-        servicesPrevBtn.classList.toggle('disabled', currentScroll <= 5);
-    }
-    if (servicesNextBtn) {
-        servicesNextBtn.classList.toggle('disabled', currentScroll >= maxScroll - 5);
-    }
-}
-
-if (servicesNextBtn) {
-    servicesNextBtn.addEventListener('click', () => {
-        if (servicesCurrentIndex < servicesTotalItems - 1) {
-            servicesCurrentIndex++;
-            updateServicesCarousel();
-        }
-    });
-}
-
-if (servicesPrevBtn) {
-    servicesPrevBtn.addEventListener('click', () => {
-        if (servicesCurrentIndex > 0) {
-            servicesCurrentIndex--;
-            updateServicesCarousel();
-        }
-    });
-}
-
-if (servicesCarousel) {
-    servicesCarousel.addEventListener('scroll', () => {
-        const scrollPos = servicesCarousel.scrollLeft;
-        const newIndex = Math.round(scrollPos / (servicesItemWidth + 30));
-        if (newIndex !== servicesCurrentIndex && !isNaN(newIndex)) {
-            servicesCurrentIndex = newIndex;
-            updateServicesDots();
-        }
-        updateServicesButtons();
-    });
-    
-    window.addEventListener('resize', () => {
-        setTimeout(() => {
-            servicesItemWidth = document.querySelector('.service-item')?.offsetWidth || 320;
-            updateServicesCarousel();
-            updateServicesDots();
-        }, 100);
-    });
-}
-
-setTimeout(() => {
-    updateServicesDots();
-    updateServicesButtons();
-}, 100);
 
 // Кнопка "Оставить отзыв"
 const openReviewBtn = document.getElementById('openReviewBtn');
