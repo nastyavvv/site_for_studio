@@ -40,12 +40,12 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ========== ПРАЙС С ПРОЛИСТЫВАНИЕМ ==========
+// ========== МОДАЛЬНОЕ ОКНО ДЛЯ ЦЕН ==========
 const priceModal = document.getElementById('priceModal');
 const modalContent = document.getElementById('modalPriceContent');
 const closeModalBtn = document.getElementById('closeModalBtn');
 
-// Данные для каждой услуги (полный прайс)
+// Данные для каждой услуги
 const priceData = {
     massage: {
         title: 'Сферический массаж',
@@ -206,7 +206,77 @@ function buildPriceHTML(serviceType) {
     return html;
 }
 
-// Открытие модального окна при клике на карточку
+// Переменные для карусели ПРАЙСА (в модалке)
+let priceCarouselTrack = null;
+let priceCurrentSlide = 0;
+let priceTotalSlides = 0;
+let priceDotsContainer = null;
+
+function initPriceCarousel() {
+    priceCarouselTrack = document.querySelector('.price-carousel-track');
+    const slides = document.querySelectorAll('.price-slide');
+    const prevBtn = document.querySelector('.carousel-arrow.prev');
+    const nextBtn = document.querySelector('.carousel-arrow.next');
+    priceDotsContainer = document.querySelector('.price-dots');
+    
+    if (!priceCarouselTrack || slides.length === 0) return;
+    
+    priceTotalSlides = slides.length;
+    priceCurrentSlide = 0;
+    
+    // Создаём точки
+    if (priceDotsContainer) {
+        priceDotsContainer.innerHTML = '';
+        for (let i = 0; i < priceTotalSlides; i++) {
+            const dot = document.createElement('span');
+            dot.classList.add('price-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToPriceSlide(i));
+            priceDotsContainer.appendChild(dot);
+        }
+    }
+    
+    function updatePriceCarousel() {
+        const slideWidth = slides[0]?.offsetWidth || 0;
+        priceCarouselTrack.style.transform = `translateX(-${priceCurrentSlide * slideWidth}px)`;
+        
+        document.querySelectorAll('.price-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === priceCurrentSlide);
+        });
+    }
+    
+    function goToPriceSlide(index) {
+        if (index < 0) index = 0;
+        if (index >= priceTotalSlides) index = priceTotalSlides - 1;
+        priceCurrentSlide = index;
+        updatePriceCarousel();
+    }
+    
+    if (prevBtn) {
+        prevBtn.onclick = () => {
+            if (priceCurrentSlide > 0) {
+                priceCurrentSlide--;
+                updatePriceCarousel();
+            }
+        };
+    }
+    if (nextBtn) {
+        nextBtn.onclick = () => {
+            if (priceCurrentSlide < priceTotalSlides - 1) {
+                priceCurrentSlide++;
+                updatePriceCarousel();
+            }
+        };
+    }
+    
+    window.addEventListener('resize', () => {
+        updatePriceCarousel();
+    });
+    
+    updatePriceCarousel();
+}
+
+// Открытие модального окна
 const serviceItems = document.querySelectorAll('.service-item');
 
 if (serviceItems.length) {
@@ -217,85 +287,10 @@ if (serviceItems.length) {
                 modalContent.innerHTML = buildPriceHTML(serviceType);
                 priceModal.style.display = 'flex';
                 document.body.style.overflow = 'hidden';
-                
-                // Инициализируем карусель после загрузки
-                setTimeout(initCarousel, 50);
+                setTimeout(initPriceCarousel, 50);
             }
         });
     });
-}
-
-// Функция для карусели
-let currentSlide = 0;
-let totalSlides = 0;
-let track = null;
-let dotsContainer = null;
-
-function initCarousel() {
-    track = document.querySelector('.price-carousel-track');
-    const slides = document.querySelectorAll('.price-slide');
-    const prevBtn = document.querySelector('.carousel-arrow.prev');
-    const nextBtn = document.querySelector('.carousel-arrow.next');
-    dotsContainer = document.querySelector('.price-dots');
-    
-    if (!track || slides.length === 0) return;
-    
-    totalSlides = slides.length;
-    currentSlide = 0;
-    
-    // Создаём точки
-    if (dotsContainer) {
-        dotsContainer.innerHTML = '';
-        for (let i = 0; i < totalSlides; i++) {
-            const dot = document.createElement('span');
-            dot.classList.add('price-dot');
-            if (i === 0) dot.classList.add('active');
-            dot.addEventListener('click', () => goToSlide(i));
-            dotsContainer.appendChild(dot);
-        }
-    }
-    
-    // Обновляем позицию
-    function updateCarousel() {
-        const slideWidth = slides[0]?.offsetWidth || 0;
-        track.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
-        
-        // Обновляем точки
-        document.querySelectorAll('.price-dot').forEach((dot, i) => {
-            dot.classList.toggle('active', i === currentSlide);
-        });
-    }
-    
-    function goToSlide(index) {
-        if (index < 0) index = 0;
-        if (index >= totalSlides) index = totalSlides - 1;
-        currentSlide = index;
-        updateCarousel();
-    }
-    
-    function nextSlide() {
-        if (currentSlide < totalSlides - 1) {
-            currentSlide++;
-            updateCarousel();
-        }
-    }
-    
-    function prevSlide() {
-        if (currentSlide > 0) {
-            currentSlide--;
-            updateCarousel();
-        }
-    }
-    
-    if (prevBtn) prevBtn.onclick = prevSlide;
-    if (nextBtn) nextBtn.onclick = nextSlide;
-    
-    // Обновляем при изменении размера окна
-    window.addEventListener('resize', () => {
-        updateCarousel();
-    });
-    
-    updateCarousel();
 }
 
 // Закрытие модального окна
@@ -319,6 +314,111 @@ document.addEventListener('keydown', (e) => {
         document.body.style.overflow = 'auto';
     }
 });
+
+// ========== КАРУСЕЛЬ УСЛУГ (ГОРИЗОНТАЛЬНАЯ) ==========
+const servicesCarousel = document.getElementById('servicesCarousel');
+const servicesPrevBtn = document.getElementById('servicesPrev');
+const servicesNextBtn = document.getElementById('servicesNext');
+const servicesDotsContainer = document.getElementById('servicesDots');
+
+let servicesCurrentIndex = 0;
+let servicesTotalItems = 0;
+let servicesItemWidth = 0;
+
+function updateServicesCarousel() {
+    if (!servicesCarousel) return;
+    
+    const scrollAmount = servicesCurrentIndex * (servicesItemWidth + 30);
+    servicesCarousel.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth'
+    });
+    
+    updateServicesDots();
+    updateServicesButtons();
+}
+
+function updateServicesDots() {
+    if (!servicesDotsContainer) return;
+    
+    const items = document.querySelectorAll('.service-item');
+    servicesTotalItems = items.length;
+    servicesItemWidth = items[0]?.offsetWidth || 320;
+    
+    if (servicesDotsContainer.children.length === 0) {
+        for (let i = 0; i < servicesTotalItems; i++) {
+            const dot = document.createElement('span');
+            dot.classList.add('services-dot');
+            dot.addEventListener('click', () => {
+                servicesCurrentIndex = i;
+                updateServicesCarousel();
+            });
+            servicesDotsContainer.appendChild(dot);
+        }
+    }
+    
+    const dots = document.querySelectorAll('.services-dot');
+    dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === servicesCurrentIndex);
+    });
+}
+
+function updateServicesButtons() {
+    if (!servicesCarousel) return;
+    
+    const maxScroll = servicesCarousel.scrollWidth - servicesCarousel.clientWidth;
+    const currentScroll = servicesCarousel.scrollLeft;
+    
+    if (servicesPrevBtn) {
+        servicesPrevBtn.classList.toggle('disabled', currentScroll <= 5);
+    }
+    if (servicesNextBtn) {
+        servicesNextBtn.classList.toggle('disabled', currentScroll >= maxScroll - 5);
+    }
+}
+
+if (servicesNextBtn) {
+    servicesNextBtn.addEventListener('click', () => {
+        if (servicesCurrentIndex < servicesTotalItems - 1) {
+            servicesCurrentIndex++;
+            updateServicesCarousel();
+        }
+    });
+}
+
+if (servicesPrevBtn) {
+    servicesPrevBtn.addEventListener('click', () => {
+        if (servicesCurrentIndex > 0) {
+            servicesCurrentIndex--;
+            updateServicesCarousel();
+        }
+    });
+}
+
+if (servicesCarousel) {
+    servicesCarousel.addEventListener('scroll', () => {
+        const scrollPos = servicesCarousel.scrollLeft;
+        const newIndex = Math.round(scrollPos / (servicesItemWidth + 30));
+        if (newIndex !== servicesCurrentIndex && !isNaN(newIndex)) {
+            servicesCurrentIndex = newIndex;
+            updateServicesDots();
+        }
+        updateServicesButtons();
+    });
+    
+    window.addEventListener('resize', () => {
+        setTimeout(() => {
+            servicesItemWidth = document.querySelector('.service-item')?.offsetWidth || 320;
+            updateServicesCarousel();
+            updateServicesDots();
+        }, 100);
+    });
+}
+
+setTimeout(() => {
+    updateServicesDots();
+    updateServicesButtons();
+}, 100);
 
 // Кнопка "Оставить отзыв"
 const openReviewBtn = document.getElementById('openReviewBtn');

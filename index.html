@@ -64,40 +64,55 @@
                     <div class="section-header">
                         <span class="section-tag">что мы предлагаем</span>
                         <h2>Наши услуги</h2>
-                        <p>Нажмите на карточку, чтобы увидеть полный прайс</p>
+                        <p>Листайте вправо, чтобы увидеть все →</p>
                     </div>
-                    <div class="services-grid">
-                        <div class="service-item" data-service="massage">
-                            <h3>Сферический массаж</h3>
-                            <p>Лимфодренаж, уменьшение объёмов, борьба с целлюлитом</p>
-                            <span class="service-price">от 1200₽</span>
+                    
+                    <div class="services-carousel-wrapper">
+                        <button class="services-arrow prev" id="servicesPrev">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        
+                        <div class="services-carousel" id="servicesCarousel">
+                            <div class="services-track" id="servicesTrack">
+                                <div class="service-item" data-service="massage">
+                                    <h3>Сферический массаж</h3>
+                                    <p>Лимфодренаж, уменьшение объёмов, борьба с целлюлитом</p>
+                                    <span class="service-price">от 1200₽</span>
+                                </div>
+                                <div class="service-item" data-service="tanning">
+                                    <h3>Солярий</h3>
+                                    <p>Немецкие лампы, ровный загар, абонементы со скидкой</p>
+                                    <span class="service-price">от 40₽/мин</span>
+                                </div>
+                                <div class="service-item" data-service="permanent">
+                                    <h3>Перманентный макияж</h3>
+                                    <p>Губы, брови, стрелки. Стойкость до 3 лет</p>
+                                    <span class="service-price">от 6000₽</span>
+                                </div>
+                                <div class="service-item" data-service="lamination">
+                                    <h3>Ламинирование</h3>
+                                    <p>Ресниц и бровей. Объём, изгиб, насыщенный цвет</p>
+                                    <span class="service-price">от 1200₽</span>
+                                </div>
+                                <div class="service-item" data-service="cosmetology">
+                                    <h3>Косметология</h3>
+                                    <p>Аппаратная косметология, уходовые процедуры</p>
+                                    <span class="service-price">от 2000₽</span>
+                                </div>
+                                <div class="service-item" data-service="laser">
+                                    <h3>Лазерная эпиляция</h3>
+                                    <p>Диодный лазер. Быстро, эффективно, комфортно</p>
+                                    <span class="service-price">от 500₽</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="service-item" data-service="tanning">
-                            <h3>Солярий</h3>
-                            <p>Немецкие лампы, ровный загар, абонементы со скидкой</p>
-                            <span class="service-price">от 40₽/мин</span>
-                        </div>
-                        <div class="service-item" data-service="permanent">
-                            <h3>Перманентный макияж</h3>
-                            <p>Губы, брови, стрелки. Стойкость до 3 лет</p>
-                            <span class="service-price">от 6000₽</span>
-                        </div>
-                        <div class="service-item" data-service="lamination">
-                            <h3>Ламинирование</h3>
-                            <p>Ресниц и бровей. Объём, изгиб, насыщенный цвет</p>
-                            <span class="service-price">от 1200₽</span>
-                        </div>
-                        <div class="service-item" data-service="cosmetology">
-                            <h3>Косметология</h3>
-                            <p>Аппаратная косметология, уходовые процедуры</p>
-                            <span class="service-price">от 2000₽</span>
-                        </div>
-                        <div class="service-item" data-service="laser">
-                            <h3>Лазерная эпиляция</h3>
-                            <p>Диодный лазер. Быстро, эффективно, комфортно</p>
-                            <span class="service-price">от 500₽</span>
-                        </div>
+                        
+                        <button class="services-arrow next" id="servicesNext">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
+                    
+                    <div class="services-dots" id="servicesDots"></div>
                 </div>
             </div>
         </section>
