@@ -3,48 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>LASERHAUS68 | Студия эстетической коррекции | Тамбов</title>
-    <meta name="description" content="LASERHAUS68 — студия эстетической коррекции в Тамбове. Лазерная эпиляция диодным лазером 2400 Вт, сферический массаж, солярий, перманент, ламинирование.">
+    <title>НЕ ХАОС | Студия красоты | Тамбов</title>
+    <meta name="description" content="НЕ ХАОС — студия красоты в Тамбове. Сферический массаж, солярий, перманентный макияж, ламинирование, косметология.">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- Header прямо здесь -->
-    <header>
+    <div class="cursor"></div>
+
+    <nav class="navbar">
         <div class="container">
-            <div class="header-content">
-                <a href="#" class="logo">LASER<span>HAUS68</span></a>
-                <ul class="nav-links">
+            <div class="nav-wrapper">
+                <a href="#" class="brand">
+                    <span class="brand-main">НЕ ХАОС</span>
+                    <span class="brand-sub">студия красоты</span>
+                </a>
+                <ul class="nav-menu">
                     <li><a href="#services">Услуги</a></li>
-                    <li><a href="#about">О студии</a></li>
+                    <li><a href="#about">О нас</a></li>
+                    <li><a href="#gallery">Галерея</a></li>
                     <li><a href="#reviews">Отзывы</a></li>
                     <li><a href="#contact">Контакты</a></li>
                 </ul>
-                <div class="mobile-menu-btn">
+                <button class="menu-btn">
                     <i class="fas fa-bars"></i>
-                </div>
+                </button>
             </div>
         </div>
-    </header>
+    </nav>
 
     <main>
-        <section class="hero" id="hero">
+        <section class="hero">
             <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-content">
-                        <h1>Здесь становятся гладкими, стройными, загорелыми</h1>
-                        <p>Мощный диодный лазер 2400 Вт • Солярий с немецкими лампами • Коррекция фигуры • Косметология</p>
-                        <div class="hero-buttons">
+                <div class="hero-inner">
+                    <div class="hero-text">
+                        <div class="hero-label">добро пожаловать</div>
+                        <h1 class="hero-title">НЕ ХАОС, <br><span>а студия красоты</span></h1>
+                        <p class="hero-desc">Пространство, где царит гармония. Сферический массаж, солярий, перманент и забота о вашей красоте.</p>
+                        <div class="hero-btns">
                             <a href="#contact" class="btn-primary">Записаться</a>
+                            <a href="#services" class="btn-secondary">Узнать больше</a>
                         </div>
                     </div>
                     <div class="hero-image">
-                        <img src="интерьер студии.png" alt="Интерьер студии LASERHAUS68">
+                        <div class="hero-img-wrapper">
+                            <img src="интерьер студии.png" alt="Студия красоты НЕ ХАОС">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -52,40 +62,41 @@
 
         <section class="services" id="services">
             <div class="container">
-                <div style="text-align: center;">
+                <div class="section-header">
+                    <span class="section-tag">что мы предлагаем</span>
                     <h2>Наши услуги</h2>
-                    <p class="section-subtitle">Нажмите на услугу, чтобы посмотреть цены</p>
+                    <p>Нажмите на карточку, чтобы увидеть полный прайс</p>
                 </div>
                 <div class="services-grid">
-                    <div class="service-card" data-service="laser">
-                        <div class="service-icon">⚡</div>
-                        <h3>Лазерная эпиляция</h3>
-                        <p>Диодный лазер D-Las 120, 2400 Вт, 808 nm. Безопасно, эффективно, безболезненно.</p>
-                    </div>
-                    <div class="service-card" data-service="massage">
+                    <div class="service-item" data-service="massage">
                         <div class="service-icon">🌀</div>
                         <h3>Сферический массаж</h3>
-                        <p>Уменьшение объёмов, целлюлита, лимфодренаж, упругость кожи, релакс.</p>
+                        <p>Лимфодренаж, уменьшение объёмов, борьба с целлюлитом</p>
                     </div>
-                    <div class="service-card" data-service="tanning">
+                    <div class="service-item" data-service="tanning">
                         <div class="service-icon">☀️</div>
                         <h3>Солярий</h3>
-                        <p>Немецкие лампы, крем «Sun Luxe». Абонементы со скидкой.</p>
+                        <p>Немецкие лампы, ровный загар, абонементы со скидкой</p>
                     </div>
-                    <div class="service-card" data-service="permanent">
+                    <div class="service-item" data-service="permanent">
                         <div class="service-icon">💄</div>
                         <h3>Перманентный макияж</h3>
-                        <p>Губы, брови, стрелки. Стойкий цвет до нескольких лет.</p>
+                        <p>Губы, брови, стрелки. Стойкость до 3 лет</p>
                     </div>
-                    <div class="service-card" data-service="lamination">
+                    <div class="service-item" data-service="lamination">
                         <div class="service-icon">👁️</div>
                         <h3>Ламинирование</h3>
-                        <p>Ресниц и бровей. Изгиб, густота, насыщенный цвет.</p>
+                        <p>Ресниц и бровей. Объём, изгиб, насыщенный цвет</p>
                     </div>
-                    <div class="service-card" data-service="cosmetology">
+                    <div class="service-item" data-service="cosmetology">
                         <div class="service-icon">✨</div>
                         <h3>Косметология</h3>
-                        <p>Аппаратная косметология, уходовые процедуры.</p>
+                        <p>Аппаратная косметология, уходовые процедуры</p>
+                    </div>
+                    <div class="service-item" data-service="laser">
+                        <div class="service-icon">⭐</div>
+                        <h3>Лазерная эпиляция</h3>
+                        <p>Диодный лазер. Быстро, эффективно, комфортно</p>
                     </div>
                 </div>
             </div>
@@ -95,122 +106,91 @@
             <div class="container">
                 <div class="about-grid">
                     <div class="about-image">
-                        <img src="images/кабинет.png" alt="Кабинет LASERHAUS68">
+                        <img src="кабинет.png" alt="Атмосфера студии">
                     </div>
-                    <div class="about-content">
-                        <h2>Диодный лазер D-Las 120</h2>
-                        <p>Мощность 2400 Вт, длина волны 808 nm. Производитель диодов — Германия.</p>
-                        <ul class="about-features">
-                            <li><i class="fas fa-check-circle"></i> <strong>Безопасный</strong> — регистрационное удостоверение Росздравнадзора</li>
-                            <li><i class="fas fa-check-circle"></i> <strong>Эффективный</strong> — диодная головка Dilas (Германия)</li>
-                            <li><i class="fas fa-check-circle"></i> <strong>Безболезненный</strong> — 5-ступенчатая система охлаждения с сапфировым стеклом</li>
-                            <li><i class="fas fa-check-circle"></i> <strong>Быстрый</strong> — высокая мощность и большое рабочее пятно</li>
+                    <div class="about-text">
+                        <span class="section-tag">о студии</span>
+                        <h2>Пространство для вашей гармонии</h2>
+                        <p><strong>НЕ ХАОС</strong> — это место, где каждая девушка может замедлиться, выдохнуть и посвятить время себе. Мы создали уютную атмосферу в греческом стиле, где забота о красоте становится настоящим ритуалом.</p>
+                        <ul class="about-list">
+                            <li><i class="fas fa-check"></i> Натуральные материалы и косметика</li>
+                            <li><i class="fas fa-check"></i> Индивидуальный подход к каждой</li>
+                            <li><i class="fas fa-check"></i> Мастера с любовью к своему делу</li>
+                            <li><i class="fas fa-check"></i> Атмосфера полного релакса</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
+        <section class="gallery" id="gallery">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">вдохновение</span>
+                    <h2>Наша галерея</h2>
+                    <p>Атмосфера уюта и красоты</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-card">
+                        <img src="интерьер студии.png" alt="Интерьер">
+                        <div class="gallery-overlay">
+                            <span>Уютный интерьер</span>
+                        </div>
+                    </div>
+                    <div class="gallery-card">
+                        <img src="кабинет.png" alt="Кабинет">
+                        <div class="gallery-overlay">
+                            <span>Процедурный кабинет</span>
+                        </div>
+                    </div>
+                    <!-- Добавьте новые фото сюда -->
+                </div>
+            </div>
+        </section>
+
         <section class="reviews" id="reviews">
             <div class="container">
-                <div style="text-align: center;">
-                    <h2>Отзывы наших гостей</h2>
-                    <p class="section-subtitle">Реальные слова благодарности от клиентов LASERHAUS68</p>
+                <div class="section-header">
+                    <span class="section-tag">отзывы</span>
+                    <h2>Что говорят наши гости</h2>
+                    <p>Реальные слова благодарности</p>
                 </div>
-                
-                <div class="reviews-grid">
+                <div class="reviews-slider">
                     <div class="review-card">
-                        <div class="review-header">
-                            <div class="review-avatar">А</div>
-                            <div class="review-info">
+                        <div class="review-quote">“</div>
+                        <p class="review-text">Наконец-то нашла место, где можно по-настоящему расслабиться. Сферический массаж — это что-то невероятное! Ушли отёки, тело стало лёгким. Обязательно вернусь!</p>
+                        <div class="review-author">
+                            <div class="author-avatar">А</div>
+                            <div class="author-info">
                                 <h4>Анна К.</h4>
-                                <div class="review-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
+                                <div class="author-stars">★★★★★</div>
                             </div>
                         </div>
-                        <p class="review-text">"Делала лазерную эпиляцию. Очень довольна результатом! После первой процедуры волосы стали расти медленнее, стали мягче. Аппарат мощный, боль почти не чувствуется благодаря охлаждению. Спасибо мастеру за профессионализм!"</p>
-                        <div class="review-service">Лазерная эпиляция</div>
                     </div>
-                    
                     <div class="review-card">
-                        <div class="review-header">
-                            <div class="review-avatar">Е</div>
-                            <div class="review-info">
+                        <div class="review-quote">“</div>
+                        <p class="review-text">Делала перманент губ — результат превзошёл ожидания! Цвет насыщенный, контур ровный. Мастер — золотые руки. Спасибо за красоту!</p>
+                        <div class="review-author">
+                            <div class="author-avatar">Е</div>
+                            <div class="author-info">
                                 <h4>Екатерина М.</h4>
-                                <div class="review-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
+                                <div class="author-stars">★★★★★</div>
                             </div>
                         </div>
-                        <p class="review-text">"Хожу на сферический массаж уже месяц. Результат потрясающий: ушли отеки, кожа стала упругой, минус 3 см в объеме! Очень приятная атмосфера, чисто, уютно. Обязательно вернусь!"</p>
-                        <div class="review-service">Сферический массаж</div>
                     </div>
-                    
                     <div class="review-card">
-                        <div class="review-header">
-                            <div class="review-avatar">О</div>
-                            <div class="review-info">
+                        <div class="review-quote">“</div>
+                        <p class="review-text">Солярий с немецкими лампами — загар ровный и красивый. Всё чисто, аккуратно, есть крем и стикини. Рекомендую!</p>
+                        <div class="review-author">
+                            <div class="author-avatar">О</div>
+                            <div class="author-info">
                                 <h4>Ольга В.</h4>
-                                <div class="review-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
+                                <div class="author-stars">★★★★★</div>
                             </div>
                         </div>
-                        <p class="review-text">"Делала перманент губ — это просто магия! Цвет насыщенный, контур ровный, выглядит очень естественно. Теперь не нужно каждый день подкрашивать губы. Спасибо мастеру за золотые руки!"</p>
-                        <div class="review-service">Перманентный макияж</div>
-                    </div>
-                    
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="review-avatar">И</div>
-                            <div class="review-info">
-                                <h4>Ирина С.</h4>
-                                <div class="review-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="review-text">"Очень нравится солярий! Лампы немецкие, загар ложится ровно и красиво. Абонементы выгодные. Всё чисто, есть крем и стикини. Рекомендую!"</p>
-                        <div class="review-service">Солярий</div>
-                    </div>
-                    
-                    <div class="review-card">
-                        <div class="review-header">
-                            <div class="review-avatar">М</div>
-                            <div class="review-info">
-                                <h4>Мария Д.</h4>
-                                <div class="review-stars">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="review-text">"Ламинирование ресниц — это любовь с первого раза! Ресницы стали объемными, изогнутыми, взгляд распахнутый. Эффект держится почти месяц. Спасибо мастеру за аккуратность!"</p>
-                        <div class="review-service">Ламинирование</div>
                     </div>
                 </div>
-                
-                <div style="text-align: center; margin-top: 40px;">
+                <div class="reviews-btn">
                     <button class="btn-outline" id="openReviewBtn">
                         <i class="fas fa-pen"></i> Оставить отзыв
                     </button>
@@ -220,76 +200,81 @@
 
         <section class="contact" id="contact">
             <div class="container">
-                <div class="contact-grid">
+                <div class="contact-wrapper">
                     <div class="contact-info">
-                        <h2>Свяжитесь с нами</h2>
-                        <p>Запишитесь на консультацию или задайте вопросы. Администратор свяжется с вами.</p>
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <h4>Адрес</h4>
-                                <p>г. Тамбов, ул. Сабуровская, д. 1в</p>
+                        <span class="section-tag">связь</span>
+                        <h2>Давайте знакомиться</h2>
+                        <p>Запишитесь на консультацию или задайте вопросы. Администратор свяжется с вами в ближайшее время.</p>
+                        <div class="contact-details">
+                            <div class="contact-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Адрес</h4>
+                                    <p>г. Тамбов, ул. Сабуровская, д. 1в</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-phone"></i>
-                            <div>
-                                <h4>Телефон</h4>
-                                <p><a href="tel:+79537229057">+7 (953) 722-90-57</a></p>
+                            <div class="contact-detail">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <h4>Телефон</h4>
+                                    <p><a href="tel:+79537229057">+7 (953) 722-90-57</a></p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-clock"></i>
-                            <div>
-                                <h4>Режим работы</h4>
-                                <p>Ежедневно: 10:00 – 21:00</p>
+                            <div class="contact-detail">
+                                <i class="fas fa-clock"></i>
+                                <div>
+                                    <h4>Режим работы</h4>
+                                    <p>Ежедневно: 10:00 – 21:00</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fab fa-instagram"></i>
-                            <div>
-                                <h4>Instagram</h4>
-                                <p><a href="https://instagram.com/laser_haus.68" target="_blank">@laser_haus.68</a></p>
+                            <div class="contact-detail">
+                                <i class="fab fa-instagram"></i>
+                                <div>
+                                    <h4>Instagram</h4>
+                                    <p><a href="https://instagram.com/laser_haus.68" target="_blank">@laser_haus.68</a></p>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="contact-form">
-                        <h3 style="margin-bottom: 24px;">Оставьте заявку</h3>
                         <form id="contactForm">
                             <div class="form-group">
-                                <input type="text" id="name" placeholder="Ваше имя" required>
+                                <input type="text" placeholder="Ваше имя" id="name" required>
                             </div>
                             <div class="form-group">
-                                <input type="tel" id="phone" placeholder="Телефон" required>
+                                <input type="tel" placeholder="Телефон" id="phone" required>
                             </div>
                             <div class="form-group">
-                                <textarea id="message" placeholder="Ваш вопрос или пожелания"></textarea>
+                                <textarea placeholder="Ваш вопрос или пожелания" id="message" rows="4"></textarea>
                             </div>
-                            <button type="submit" class="btn-primary" style="width: 100%;">Отправить заявку</button>
+                            <button type="submit" class="btn-primary w-100">Отправить заявку</button>
+                            <p class="form-note">Нажимая на кнопку, вы соглашаетесь с политикой обработки персональных данных</p>
                         </form>
-                        <p style="font-size: 0.75rem; color: #999; margin-top: 16px; text-align: center;">Нажимая на кнопку, вы соглашаетесь с политикой обработки персональных данных</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer прямо здесь -->
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <p>© 2024 LASERHAUS68. Студия эстетической коррекции. Тамбов, ул. Сабуровская, 1в</p>
-                <p style="margin-top: 8px;">Диодный лазер 2400 Вт • Солярий с немецкими лампами • Сферический массаж • Перманент • Ламинирование</p>
+                <div class="footer-brand">
+                    <span class="brand-main">НЕ ХАОС</span>
+                    <span class="brand-sub">студия красоты</span>
+                </div>
+                <p>© 2024 НЕ ХАОС — студия красоты. Тамбов, ул. Сабуровская, 1в</p>
+                <p class="footer-services">Сферический массаж • Солярий • Перманент • Ламинирование • Косметология • Лазерная эпиляция</p>
             </div>
         </div>
     </footer>
 
-    <a href="https://wa.me/79537229057" class="sticky-whatsapp" target="_blank">
+    <a href="https://wa.me/79537229057" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <div class="modal-price" id="priceModal">
-        <div class="modal-price-content">
+    <div class="modal" id="priceModal">
+        <div class="modal-content">
             <button class="modal-close" id="closeModalBtn">&times;</button>
             <div id="modalPriceContent"></div>
         </div>
