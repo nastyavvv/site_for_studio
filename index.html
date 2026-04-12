@@ -158,7 +158,7 @@
                 </div>
                 <div class="gallery-grid">
                     <div class="gallery-card">
-                        <img src="ссобачкой.png" alt="Интерьер">
+                        <img src="ссобачкой.png" alt="Интерьер">
                         <div class="gallery-overlay">
                             <span>пример1</span>
                         </div>
@@ -170,7 +170,7 @@
                         </div>
                     </div>
                     <div class="gallery-card">
-                        <img src="солярий.png" alt="Интерьер">
+                        <img src="солярий.png" alt="Интерьер">
                         <div class="gallery-overlay">
                             <span>пример3</span>
                         </div>
@@ -178,7 +178,6 @@
                 </div>
             </div>
         </section>
-
 
         <!-- Подарочные сертификаты -->
         <section class="certificates" id="certificates">
@@ -194,7 +193,6 @@
                         <i class="fas fa-gift"></i> Оформить сертификат
                     </div>
 
-                    <!-- КАРТОЧКИ НОМИНАЛОВ ВНУТРИ ФОРМЫ -->
                     <div class="cert-nominals">
                         <div class="cert-nominals-label">Выберите номинал сертификата:</div>
                         <div class="cert-grid-inline">
@@ -232,16 +230,13 @@
                                 начиная с +7 или 8)</div>
                         </div>
                         <div class="cert-form-group">
-                            <input type="text" id="certRecipient" placeholder="Имя получателя">
+                            <input type="text" id="certRecipient" placeholder="Имя получателя (если знаете)">
                         </div>
                         <div class="cert-form-group">
                             <textarea id="certMessage" rows="2"
                                 placeholder="Ваше поздравление или пожелание..."></textarea>
                         </div>
-
-                        <!-- Скрытое поле для хранения выбранного номинала -->
                         <input type="hidden" id="certValue" value="">
-
                         <button type="submit" class="cert-submit-btn" id="certSubmitBtn">
                             <i class="fab fa-whatsapp"></i> Отправить заявку в WhatsApp
                         </button>
@@ -259,48 +254,72 @@
                     <h2>Что говорят наши гости</h2>
                     <p>Реальные слова благодарности</p>
                 </div>
-                <div class="reviews-slider">
-                    <div class="review-card">
-                        <div class="review-quote">“</div>
-                        <p class="review-text">Наконец-то нашла место, где можно по-настоящему расслабиться. Сферический
-                            массаж — это что-то невероятное! Ушли отёки, тело стало лёгким. Обязательно вернусь!</p>
-                        <div class="review-author">
-                            <div class="author-avatar">А</div>
-                            <div class="author-info">
-                                <h4>Анна К.</h4>
-                                <div class="author-stars">★★★★★</div>
-                            </div>
-                        </div>
+                <div class="reviews-slider" id="reviewsList">
+                    <!-- Отзывы будут загружаться сюда -->
+                </div>
+
+                <!-- ФОРМА ОТЗЫВА НА САЙТЕ -->
+                <div class="review-form-container">
+                    <div class="review-form-title">
+                        <i class="fas fa-pen"></i> Оставить свой отзыв
                     </div>
-                    <div class="review-card">
-                        <div class="review-quote">“</div>
-                        <p class="review-text">Делала перманент губ — результат превзошёл ожидания! Цвет насыщенный,
-                            контур ровный. Мастер — золотые руки. Спасибо за красоту!</p>
-                        <div class="review-author">
-                            <div class="author-avatar">Е</div>
-                            <div class="author-info">
-                                <h4>Екатерина М.</h4>
-                                <div class="author-stars">★★★★★</div>
-                            </div>
+                    <form id="siteReviewForm">
+                        <div class="review-rating" id="ratingStars">
+                            <input type="radio" name="rating" value="5" id="star5"><label for="star5">★</label>
+                            <input type="radio" name="rating" value="4" id="star4"><label for="star4">★</label>
+                            <input type="radio" name="rating" value="3" id="star3"><label for="star3">★</label>
+                            <input type="radio" name="rating" value="2" id="star2"><label for="star2">★</label>
+                            <input type="radio" name="rating" value="1" id="star1"><label for="star1">★</label>
                         </div>
-                    </div>
-                    <div class="review-card">
-                        <div class="review-quote">“</div>
-                        <p class="review-text">Солярий с немецкими лампами — загар ровный и красивый. Всё чисто,
-                            аккуратно, есть крем и стикини. Рекомендую!</p>
-                        <div class="review-author">
-                            <div class="author-avatar">О</div>
-                            <div class="author-info">
-                                <h4>Ольга В.</h4>
-                                <div class="author-stars">★★★★★</div>
-                            </div>
+                        <div class="review-form-group">
+                            <input type="text" id="reviewName" placeholder="Ваше имя *" required>
                         </div>
+                        <div class="review-form-group">
+                            <textarea id="reviewText" rows="3" placeholder="Ваш отзыв *" required></textarea>
+                        </div>
+                        <button type="submit" class="review-submit-btn">Отправить отзыв</button>
+                        <p class="cert-note" style="margin-top: 10px;">Отзыв появится после проверки администратором</p>
+                    </form>
+                </div>
+
+                <!-- Панель администратора (только для вас) -->
+                <div class="admin-reviews-panel" id="adminPanel" style="display: none;">
+                    <h4><i class="fas fa-shield-alt"></i> Панель управления отзывами</h4>
+                    <div id="pendingReviewsList"></div>
+                    <div class="admin-toggle">
+                        <button class="admin-toggle-btn" id="toggleAdminBtn">🔒 Закрыть панель</button>
                     </div>
                 </div>
+
                 <div class="reviews-btn">
-                    <button class="btn-outline" id="openReviewBtn">
-                        <i class="fas fa-pen"></i> Оставить отзыв
+                    <button class="btn-outline" id="openAdminBtn">
+                        <i class="fas fa-lock"></i> Админ-панель
                     </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- КАРТА ЯНДЕКСА -->
+        <section class="map-section" id="map">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">как нас найти</span>
+                    <h2>Мы на карте</h2>
+                    <p>г. Тамбов, ул. Сабуровская, 1в</p>
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://yandex.ru/map-widget/v1/?text=%D0%A2%D0%B0%D0%BC%D0%B1%D0%BE%D0%B2%2C%20%D1%83%D0%BB.%20%D0%A1%D0%B0%D0%B1%D1%83%D1%80%D0%BE%D0%B2%D1%81%D0%BA%D0%B0%D1%8F%2C%201%D0%B2&z=18&l=map"
+                        width="100%" height="450" frameborder="0" allowfullscreen="true" loading="lazy">
+                    </iframe>
+                </div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="https://yandex.ru/maps/org/laser_haus/225416326981/reviews/" target="_blank"
+                        style="color: var(--terracotta); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-star" style="color: #ffc107;"></i>
+                        <span><strong>4.1 ★</strong> (смотреть все отзывы на Яндексе)</span>
+                        <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i>
+                    </a>
                 </div>
             </div>
         </section>

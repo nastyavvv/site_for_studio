@@ -31,7 +31,6 @@ body {
     padding: 0 24px;
 }
 
-/* Typography */
 h1, h2, h3, .brand-main {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 600;
@@ -63,7 +62,6 @@ h2 {
     margin: 1rem auto 0;
 }
 
-/* Buttons */
 .btn-primary, .btn-secondary, .btn-outline {
     display: inline-block;
     padding: 12px 32px;
@@ -113,7 +111,6 @@ h2 {
     width: 100%;
 }
 
-/* Navbar */
 .navbar {
     position: fixed;
     top: 0;
@@ -177,7 +174,6 @@ h2 {
     color: var(--text);
 }
 
-/* Hero */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -235,7 +231,6 @@ h2 {
     display: block;
 }
 
-/* Services Carousel */
 .services {
     padding: 100px 0;
 }
@@ -369,7 +364,6 @@ h2 {
     background: var(--terracotta);
 }
 
-/* About */
 .about {
     padding: 100px 0;
     background: var(--white);
@@ -409,7 +403,6 @@ h2 {
     font-size: 1.2rem;
 }
 
-/* Gallery */
 .gallery {
     padding: 100px 0;
     background: var(--sand-light);
@@ -459,7 +452,6 @@ h2 {
     font-size: 0.9rem;
 }
 
-/* Reviews */
 .reviews {
     padding: 100px 0;
     background: var(--white);
@@ -528,7 +520,6 @@ h2 {
     margin-top: 50px;
 }
 
-/* Contact */
 .contact {
     padding: 100px 0;
     background: var(--sand-light);
@@ -617,7 +608,6 @@ h2 {
     margin-top: 16px;
 }
 
-/* Footer */
 .footer {
     background: var(--dark);
     color: white;
@@ -648,7 +638,6 @@ h2 {
     font-size: 0.75rem;
 }
 
-/* WhatsApp Button */
 .whatsapp-btn {
     position: fixed;
     bottom: 24px;
@@ -672,7 +661,6 @@ h2 {
     transform: scale(1.1);
 }
 
-/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -720,7 +708,6 @@ h2 {
     border-radius: 16px;
 }
 
-/* Price Modal Styles (простой список, без карусели) */
 #modalPriceContent h2 {
     font-size: 1.8rem;
     margin-bottom: 24px;
@@ -794,83 +781,6 @@ h2 {
     margin-top: 10px;
 }
 
-/* Responsive */
-@media (max-width: 992px) {
-    .hero-inner, .about-grid, .contact-wrapper {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-    
-    .hero-title {
-        font-size: 3rem;
-    }
-    
-    .hero-image {
-        order: -1;
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-menu {
-        display: none;
-    }
-    
-    .menu-btn {
-        display: block;
-    }
-    
-    h2 {
-        font-size: 2.2rem;
-    }
-    
-    .hero-title {
-        font-size: 2.5rem;
-    }
-    
-    .service-item {
-        flex: 0 0 260px;
-        min-height: 320px;
-        padding: 25px 20px;
-    }
-    
-    .contact-form {
-        padding: 24px;
-    }
-    
-    .modal-content {
-        padding: 30px 20px;
-    }
-    
-    .gallery-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .reviews-slider {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-btns {
-        flex-direction: column;
-    }
-    
-    .hero-btns .btn-primary,
-    .hero-btns .btn-secondary {
-        text-align: center;
-    }
-    
-    .service-item {
-        flex: 0 0 240px;
-        min-height: 300px;
-    }
-    
-    .service-item h3 {
-        font-size: 1.3rem;
-    }
-}
-
-/* ========== ПОДАРОЧНЫЕ СЕРТИФИКАТЫ ========== */
 .certificates {
     padding: 100px 0;
     background: linear-gradient(135deg, var(--sand-light) 0%, #fff 100%);
@@ -880,7 +790,6 @@ h2 {
     font-family: 'Cormorant Garamond', serif;
 }
 
-/* Форма сертификата */
 .cert-form-wrapper {
     max-width: 650px;
     margin: 0 auto;
@@ -904,7 +813,6 @@ h2 {
     margin-right: 10px;
 }
 
-/* Карточки номиналов внутри формы */
 .cert-nominals {
     margin-bottom: 25px;
 }
@@ -950,11 +858,6 @@ h2 {
     transform: translateY(-5px);
 }
 
-.cert-icon {
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-}
-
 .cert-value {
     font-size: 1.3rem;
     font-weight: 700;
@@ -978,7 +881,6 @@ h2 {
     margin-top: 8px;
 }
 
-/* Поля формы */
 .cert-form-group {
     margin-bottom: 20px;
 }
@@ -1051,7 +953,233 @@ h2 {
     margin-top: 15px;
 }
 
+.review-form-container {
+    max-width: 600px;
+    margin: 40px auto 0;
+    background: var(--sand-light);
+    border-radius: 30px;
+    padding: 30px;
+    border: 1px solid rgba(212, 163, 115, 0.2);
+}
+
+.review-form-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+    color: var(--terracotta);
+}
+
+.review-rating {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    direction: rtl;
+}
+
+.review-rating input {
+    display: none;
+}
+
+.review-rating label {
+    font-size: 28px;
+    color: #ddd;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.review-rating label:hover,
+.review-rating label:hover ~ label,
+.review-rating input:checked ~ label {
+    color: #ffc107;
+}
+
+.review-form-group {
+    margin-bottom: 15px;
+}
+
+.review-form-group input,
+.review-form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e8ddd0;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    background: white;
+}
+
+.review-form-group input:focus,
+.review-form-group textarea:focus {
+    outline: none;
+    border-color: var(--terracotta);
+}
+
+.review-submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--terracotta);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.review-submit-btn:hover {
+    background: var(--terracotta-dark);
+}
+
+.admin-reviews-panel {
+    max-width: 800px;
+    margin: 40px auto 0;
+    background: white;
+    border-radius: 30px;
+    padding: 20px;
+    border: 1px solid #e8ddd0;
+}
+
+.admin-reviews-panel h4 {
+    margin-bottom: 15px;
+    color: var(--terracotta);
+    font-size: 1rem;
+}
+
+.admin-review-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.admin-review-item.pending {
+    background: #fff8e7;
+}
+
+.admin-review-item .review-info {
+    flex: 1;
+}
+
+.admin-review-item .review-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.admin-review-item .review-text {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: 4px;
+}
+
+.admin-review-item .review-stars {
+    color: #ffc107;
+    font-size: 0.7rem;
+}
+
+.admin-review-actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 5px 8px;
+    border-radius: 20px;
+    transition: all 0.2s;
+}
+
+.admin-review-actions .approve-btn {
+    color: #27ae60;
+}
+
+.admin-review-actions .approve-btn:hover {
+    background: #27ae6010;
+}
+
+.admin-review-actions .delete-btn {
+    color: #e74c3c;
+}
+
+.admin-review-actions .delete-btn:hover {
+    background: #e74c3c10;
+}
+
+.admin-toggle {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.admin-toggle-btn {
+    background: none;
+    border: none;
+    color: var(--terracotta);
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.map-section {
+    padding: 0 0 100px 0;
+    background: var(--white);
+}
+
+.map-container {
+    border-radius: 30px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    height: 450px;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+@media (max-width: 992px) {
+    .hero-inner, .about-grid, .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    .hero-title {
+        font-size: 3rem;
+    }
+    .hero-image {
+        order: -1;
+    }
+}
+
 @media (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+    .menu-btn {
+        display: block;
+    }
+    h2 {
+        font-size: 2.2rem;
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .service-item {
+        flex: 0 0 260px;
+        min-height: 320px;
+        padding: 25px 20px;
+    }
+    .contact-form {
+        padding: 24px;
+    }
+    .modal-content {
+        padding: 30px 20px;
+    }
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+    .reviews-slider {
+        grid-template-columns: 1fr;
+    }
     .cert-form-wrapper {
         padding: 25px;
         margin: 0 15px;
@@ -1063,7 +1191,27 @@ h2 {
     .cert-value {
         font-size: 1.1rem;
     }
-    .cert-icon {
-        font-size: 1.4rem;
+    .map-container {
+        height: 350px;
+    }
+    .review-form-container {
+        margin: 30px 15px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-btns {
+        flex-direction: column;
+    }
+    .hero-btns .btn-primary,
+    .hero-btns .btn-secondary {
+        text-align: center;
+    }
+    .service-item {
+        flex: 0 0 240px;
+        min-height: 300px;
+    }
+    .service-item h3 {
+        font-size: 1.3rem;
     }
 }
