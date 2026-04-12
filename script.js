@@ -389,3 +389,170 @@ if (galleryCards.length && imageModal && modalImage) {
         imageModal.style.display = 'none';
     });
 }
+
+// ========== ПОДАРОЧНЫЕ СЕРТИФИКАТЫ (WHATSAPP) ==========
+const certCards = document.querySelectorAll('.cert-card');
+const certValueHidden = document.getElementById('certValue');
+const certForm = document.getElementById('certForm');
+const phoneInput = document.getElementById('certPhone');
+const phoneError = document.getElementById('phoneError');
+const submitBtn = document.getElementById('certSubmitBtn');
+
+// Переменная для хранения текста выбранного номинала
+let selectedNominalText = '';
+
+// Функция проверки телефона
+function validatePhone(phone) {
+    let cleaned = phone.replace(/[\s\-\(\)]/g, '');
+    const pattern1 = /^\+7\d{10}$/;
+    const pattern2 = /^8\d{10}$/;
+    const pattern3 = /^7\d{10}$/;
+    return pattern1.test(cleaned) || pattern2.test(cleaned) || pattern3.test(cleaned);
+}
+
+// Функция нормализации телефона
+function normalizePhone(phone) {
+    let cleaned = phone.replace(/[\s\-\(\)]/g, '');
+    if (cleaned.startsWith('8')) {
+        cleaned = '+7' + cleaned.slice(1);
+    } else if (cleaned.startsWith('7') && !cleaned.startsWith('+7')) {
+        cleaned = '+' + cleaned;
+    } else if (!cleaned.startsWith('+')) {
+        cleaned = '+' + cleaned;
+    }
+    return cleaned;
+}
+
+// ОБРАБОТЧИК КЛИКА ПО КАРТОЧКАМ НОМИНАЛОВ
+if (certCards.length) {
+    certCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // Убираем выделение у всех карточек
+            certCards.forEach(c => c.classList.remove('selected'));
+            // Добавляем выделение текущей
+            card.classList.add('selected');
+            
+            // Получаем значение номинала
+            const value = card.getAttribute('data-value');
+            // Сохраняем в скрытое поле
+            if (certValueHidden) {
+                certValueHidden.value = value;
+            }
+            
+            // Получаем текст номинала для сообщения
+            const valueElement = card.querySelector('.cert-value');
+            if (valueElement) {
+                selectedNominalText = valueElement.textContent;
+            }
+        });
+    });
+}
+
+// Проверка телефона в реальном времени
+if (phoneInput) {
+    phoneInput.addEventListener('input', function() {
+        const phone = this.value;
+        if (phone.length > 0 && !validatePhone(phone)) {
+            this.classList.add('error');
+            phoneError.style.display = 'block';
+        } else {
+            this.classList.remove('error');
+            phoneError.style.display = 'none';
+        }
+    });
+    
+    phoneInput.addEventListener('blur', function() {
+        const phone = this.value;
+        if (phone.length > 0 && validatePhone(phone)) {
+            this.value = normalizePhone(phone);
+        }
+    });
+}
+
+// Отправка формы
+if (certForm) {
+    certForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const name = document.getElementById('certName')?.value.trim();
+        let phone = document.getElementById('certPhone')?.value.trim();
+        const recipient = document.getElementById('certRecipient')?.value.trim();
+        const personalMessage = document.getElementById('certMessage')?.value.trim();
+        const certValue = certValueHidden?.value;
+        
+        // Валидация имени
+        if (!name) {
+            alert('❌ Пожалуйста, введите ваше имя');
+            document.getElementById('certName')?.focus();
+            return;
+        }
+        
+        // Валидация телефона
+        if (!phone) {
+            alert('❌ Пожалуйста, введите номер телефона');
+            document.getElementById('certPhone')?.focus();
+            return;
+        }
+        
+        if (!validatePhone(phone)) {
+            alert('❌ Введите корректный номер телефона в формате +7XXXXXXXXXX или 8XXXXXXXXXX');
+            document.getElementById('certPhone')?.focus();
+            return;
+        }
+        
+        // Валидация выбора номинала
+        if (!certValue) {
+            alert('❌ Пожалуйста, выберите номинал сертификата (нажмите на одну из карточек с суммой)');
+            return;
+        }
+        
+        // Нормализуем телефон
+        phone = normalizePhone(phone);
+        
+        // Текст номинала
+        let valueText = selectedNominalText || `${certValue} ₽`;
+        
+        // Блокируем кнопку
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Отправляем...';
+        
+        // Формируем сообщение для WhatsApp
+        let text = `🎁 *НОВАЯ ЗАЯВКА НА СЕРТИФИКАТ* 🎁%0A%0A`;
+        text += `👤 *От кого:* ${encodeURIComponent(name)}%0A`;
+        text += `📞 *Телефон:* ${encodeURIComponent(phone)}%0A`;
+        text += `💰 *Номинал:* ${encodeURIComponent(valueText)}%0A`;
+        
+        if (recipient) {
+            text += `🎀 *Получатель:* ${encodeURIComponent(recipient)}%0A`;
+        }
+        
+        if (personalMessage) {
+            text += `💌 *Пожелание:* ${encodeURIComponent(personalMessage)}%0A`;
+        }
+        
+        text += `%0A_📅 Сообщение отправлено с сайта НЕ ХАОС_`;
+        
+        // Открываем WhatsApp
+        window.open(`https://wa.me/79537229057?text=${text}`, '_blank');
+        
+        alert('✅ Заявка открыта в WhatsApp!\n\nНажмите кнопку "Отправить", чтобы завершить оформление.\n\nМы свяжемся с вами.');
+        
+        // Очищаем форму
+        certForm.reset();
+        if (certValueHidden) certValueHidden.value = '';
+        
+        // Снимаем выделение с карточек
+        certCards.forEach(c => c.classList.remove('selected'));
+        selectedNominalText = '';
+        
+        // Разблокируем кнопку
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fab fa-whatsapp"></i> Отправить заявку в WhatsApp';
+        
+        // Убираем ошибку телефона
+        if (phoneInput) {
+            phoneInput.classList.remove('error');
+            phoneError.style.display = 'none';
+        }
+    });
+}

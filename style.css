@@ -869,3 +869,201 @@ h2 {
         font-size: 1.3rem;
     }
 }
+
+/* ========== ПОДАРОЧНЫЕ СЕРТИФИКАТЫ ========== */
+.certificates {
+    padding: 100px 0;
+    background: linear-gradient(135deg, var(--sand-light) 0%, #fff 100%);
+}
+
+.certificates .section-header h2 {
+    font-family: 'Cormorant Garamond', serif;
+}
+
+/* Форма сертификата */
+.cert-form-wrapper {
+    max-width: 650px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 40px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.cert-form-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    font-weight: 600;
+    font-family: 'Cormorant Garamond', serif;
+    color: var(--terracotta);
+}
+
+.cert-form-title i {
+    color: var(--terracotta);
+    margin-right: 10px;
+}
+
+/* Карточки номиналов внутри формы */
+.cert-nominals {
+    margin-bottom: 25px;
+}
+
+.cert-nominals-label {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 12px;
+    display: block;
+    font-weight: 500;
+}
+
+.cert-grid-inline {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.cert-card {
+    background: var(--sand-light);
+    border-radius: 24px;
+    padding: 20px 18px;
+    text-align: center;
+    min-width: 110px;
+    flex: 1;
+    max-width: 130px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 2px solid transparent;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+    position: relative;
+}
+
+.cert-card.selected {
+    border-color: var(--terracotta);
+    background: linear-gradient(145deg, #fff, #fef8f2);
+    box-shadow: 0 10px 20px rgba(212, 163, 115, 0.15);
+    transform: translateY(-3px);
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+}
+
+.cert-icon {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.cert-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--terracotta);
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.cert-desc {
+    font-size: 0.65rem;
+    color: var(--text-light);
+    margin: 5px 0 0;
+}
+
+.cert-badge {
+    display: inline-block;
+    background: var(--terracotta);
+    color: white;
+    font-size: 0.6rem;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-top: 8px;
+}
+
+/* Поля формы */
+.cert-form-group {
+    margin-bottom: 20px;
+}
+
+.cert-form-group input,
+.cert-form-group textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #e8ddd0;
+    border-radius: 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    background: white;
+}
+
+.cert-form-group input:focus,
+.cert-form-group textarea:focus {
+    outline: none;
+    border-color: var(--terracotta);
+    box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.1);
+}
+
+.cert-form-group input.error {
+    border-color: #e74c3c;
+    background: #fff5f5;
+}
+
+.cert-error-message {
+    color: #e74c3c;
+    font-size: 0.7rem;
+    margin-top: 5px;
+    margin-left: 15px;
+    display: none;
+}
+
+.cert-submit-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--terracotta);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: 'Inter', sans-serif;
+}
+
+.cert-submit-btn:hover {
+    background: var(--terracotta-dark);
+    transform: scale(1.02);
+}
+
+.cert-submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.cert-note {
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--text-light);
+    margin-top: 15px;
+}
+
+@media (max-width: 768px) {
+    .cert-form-wrapper {
+        padding: 25px;
+        margin: 0 15px;
+    }
+    .cert-card {
+        min-width: 90px;
+        padding: 15px 12px;
+    }
+    .cert-value {
+        font-size: 1.1rem;
+    }
+    .cert-icon {
+        font-size: 1.4rem;
+    }
+}

@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>НЕ ХАОС | Студия красоты | Тамбов</title>
-    <meta name="description" content="НЕ ХАОС — студия красоты в Тамбове. Сферический массаж, солярий, перманентный макияж, ламинирование, косметология.">
-    
+    <meta name="description"
+        content="НЕ ХАОС — студия красоты в Тамбове. Сферический массаж, солярий, перманентный макияж, ламинирование, косметология.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
     <nav class="navbar">
@@ -26,6 +33,7 @@
                     <li><a href="#services">Услуги</a></li>
                     <li><a href="#about">О нас</a></li>
                     <li><a href="#gallery">Галерея</a></li>
+                    <li><a href="#certificates">Сертификаты</a></li>
                     <li><a href="#reviews">Отзывы</a></li>
                     <li><a href="#contact">Контакты</a></li>
                 </ul>
@@ -43,7 +51,8 @@
                     <div class="hero-text">
                         <div class="hero-label">добро пожаловать</div>
                         <h1 class="hero-title">НЕ ХАОС, <br><span>а студия красоты</span></h1>
-                        <p class="hero-desc">Пространство, где царит гармония. Сферический массаж, солярий, перманент и забота о вашей красоте.</p>
+                        <p class="hero-desc">Пространство, где царит гармония. Сферический массаж, солярий, перманент и
+                            забота о вашей красоте.</p>
                         <div class="hero-btns">
                             <a href="#contact" class="btn-primary">Записаться</a>
                             <a href="#services" class="btn-secondary">Наши услуги</a>
@@ -66,12 +75,12 @@
                         <h2>Наши услуги</h2>
                         <p>Листайте вправо, чтобы увидеть все →</p>
                     </div>
-                    
+
                     <div class="services-carousel-wrapper">
                         <button class="services-arrow prev" id="servicesPrev">
                             <i class="fas fa-chevron-left"></i>
                         </button>
-                        
+
                         <div class="services-carousel" id="servicesCarousel">
                             <div class="services-track" id="servicesTrack">
                                 <div class="service-item" data-service="massage">
@@ -106,12 +115,12 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <button class="services-arrow next" id="servicesNext">
                             <i class="fas fa-chevron-right"></i>
                         </button>
                     </div>
-                    
+
                     <div class="services-dots" id="servicesDots"></div>
                 </div>
             </div>
@@ -126,7 +135,9 @@
                     <div class="about-text">
                         <span class="section-tag">о студии</span>
                         <h2>Пространство для вашей гармонии</h2>
-                        <p><strong>НЕ ХАОС</strong> — это место, где каждая девушка может замедлиться, выдохнуть и посвятить время себе. Мы создали уютную атмосферу в греческом стиле, где забота о красоте становится настоящим ритуалом.</p>
+                        <p><strong>НЕ ХАОС</strong> — это место, где каждая девушка может замедлиться, выдохнуть и
+                            посвятить время себе. Мы создали уютную атмосферу в греческом стиле, где забота о красоте
+                            становится настоящим ритуалом.</p>
                         <ul class="about-list">
                             <li><i class="fas fa-check"></i> Натуральные материалы и косметика</li>
                             <li><i class="fas fa-check"></i> Индивидуальный подход к каждой</li>
@@ -168,6 +179,79 @@
             </div>
         </section>
 
+
+        <!-- Подарочные сертификаты -->
+        <section class="certificates" id="certificates">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">подарок с душой</span>
+                    <h2>Подарочные сертификаты</h2>
+                    <p>Идеальный подарок для тех, кто ценит красоту и заботу о себе</p>
+                </div>
+
+                <div class="cert-form-wrapper">
+                    <div class="cert-form-title">
+                        <i class="fas fa-gift"></i> Оформить сертификат
+                    </div>
+
+                    <!-- КАРТОЧКИ НОМИНАЛОВ ВНУТРИ ФОРМЫ -->
+                    <div class="cert-nominals">
+                        <div class="cert-nominals-label">Выберите номинал сертификата:</div>
+                        <div class="cert-grid-inline">
+                            <div class="cert-card" data-value="1000">
+                                <div class="cert-value">1 000 ₽</div>
+                                <div class="cert-desc">на любую услугу</div>
+                                <span class="cert-badge">популярный</span>
+                            </div>
+                            <div class="cert-card" data-value="2000">
+                                <div class="cert-value">2 000 ₽</div>
+                                <div class="cert-desc">на любую услугу</div>
+                                <span class="cert-badge">выгодно</span>
+                            </div>
+                            <div class="cert-card" data-value="3000">
+                                <div class="cert-value">3 000 ₽</div>
+                                <div class="cert-desc">на любую услугу</div>
+                                <span class="cert-badge">VIP</span>
+                            </div>
+                            <div class="cert-card" data-value="5000">
+                                <div class="cert-value">5 000 ₽</div>
+                                <div class="cert-desc">на любую услугу</div>
+                                <span class="cert-badge">премиум</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form id="certForm">
+                        <div class="cert-form-group">
+                            <input type="text" id="certName" placeholder="Ваше имя *" required>
+                        </div>
+                        <div class="cert-form-group">
+                            <input type="tel" id="certPhone"
+                                placeholder="Телефон * (например: +79001234567 или 89001234567)" required>
+                            <div class="cert-error-message" id="phoneError">Введите корректный номер телефона (11 цифр,
+                                начиная с +7 или 8)</div>
+                        </div>
+                        <div class="cert-form-group">
+                            <input type="text" id="certRecipient" placeholder="Имя получателя">
+                        </div>
+                        <div class="cert-form-group">
+                            <textarea id="certMessage" rows="2"
+                                placeholder="Ваше поздравление или пожелание..."></textarea>
+                        </div>
+
+                        <!-- Скрытое поле для хранения выбранного номинала -->
+                        <input type="hidden" id="certValue" value="">
+
+                        <button type="submit" class="cert-submit-btn" id="certSubmitBtn">
+                            <i class="fab fa-whatsapp"></i> Отправить заявку в WhatsApp
+                        </button>
+                        <p class="cert-note">Нажмите на номинал выше, затем заполните форму — мы свяжемся с вами для
+                            подтверждения</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
         <section class="reviews" id="reviews">
             <div class="container">
                 <div class="section-header">
@@ -178,7 +262,8 @@
                 <div class="reviews-slider">
                     <div class="review-card">
                         <div class="review-quote">“</div>
-                        <p class="review-text">Наконец-то нашла место, где можно по-настоящему расслабиться. Сферический массаж — это что-то невероятное! Ушли отёки, тело стало лёгким. Обязательно вернусь!</p>
+                        <p class="review-text">Наконец-то нашла место, где можно по-настоящему расслабиться. Сферический
+                            массаж — это что-то невероятное! Ушли отёки, тело стало лёгким. Обязательно вернусь!</p>
                         <div class="review-author">
                             <div class="author-avatar">А</div>
                             <div class="author-info">
@@ -189,7 +274,8 @@
                     </div>
                     <div class="review-card">
                         <div class="review-quote">“</div>
-                        <p class="review-text">Делала перманент губ — результат превзошёл ожидания! Цвет насыщенный, контур ровный. Мастер — золотые руки. Спасибо за красоту!</p>
+                        <p class="review-text">Делала перманент губ — результат превзошёл ожидания! Цвет насыщенный,
+                            контур ровный. Мастер — золотые руки. Спасибо за красоту!</p>
                         <div class="review-author">
                             <div class="author-avatar">Е</div>
                             <div class="author-info">
@@ -200,7 +286,8 @@
                     </div>
                     <div class="review-card">
                         <div class="review-quote">“</div>
-                        <p class="review-text">Солярий с немецкими лампами — загар ровный и красивый. Всё чисто, аккуратно, есть крем и стикини. Рекомендую!</p>
+                        <p class="review-text">Солярий с немецкими лампами — загар ровный и красивый. Всё чисто,
+                            аккуратно, есть крем и стикини. Рекомендую!</p>
                         <div class="review-author">
                             <div class="author-avatar">О</div>
                             <div class="author-info">
@@ -224,7 +311,8 @@
                     <div class="contact-info">
                         <span class="section-tag">связь</span>
                         <h2>Давайте знакомиться</h2>
-                        <p>Запишитесь на консультацию или задайте вопросы. Администратор свяжется с вами в ближайшее время.</p>
+                        <p>Запишитесь на консультацию или задайте вопросы. Администратор свяжется с вами в ближайшее
+                            время.</p>
                         <div class="contact-details">
                             <div class="contact-detail">
                                 <i class="fas fa-map-marker-alt"></i>
@@ -251,7 +339,8 @@
                                 <i class="fab fa-instagram"></i>
                                 <div>
                                     <h4>Instagram</h4>
-                                    <p><a href="https://instagram.com/laser_haus.68" target="_blank">@laser_haus.68</a></p>
+                                    <p><a href="https://instagram.com/laser_haus.68" target="_blank">@laser_haus.68</a>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -268,7 +357,8 @@
                                 <textarea placeholder="Ваш вопрос или пожелания" id="message" rows="4"></textarea>
                             </div>
                             <button type="submit" class="btn-primary w-100">Отправить заявку</button>
-                            <p class="form-note">Нажимая на кнопку, вы соглашаетесь с политикой обработки персональных данных</p>
+                            <p class="form-note">Нажимая на кнопку, вы соглашаетесь с политикой обработки персональных
+                                данных</p>
                         </form>
                     </div>
                 </div>
@@ -284,7 +374,8 @@
                     <span class="brand-sub">студия красоты</span>
                 </div>
                 <p>© 2024 НЕ ХАОС — студия красоты. Тамбов, ул. Сабуровская, 1в</p>
-                <p class="footer-services">Сферический массаж • Солярий • Перманент • Ламинирование • Косметология • Лазерная эпиляция</p>
+                <p class="footer-services">Сферический массаж • Солярий • Перманент • Ламинирование • Косметология •
+                    Лазерная эпиляция</p>
             </div>
         </div>
     </footer>
@@ -306,4 +397,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
