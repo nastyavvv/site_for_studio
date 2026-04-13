@@ -15,6 +15,9 @@
     --text-light: #7a6b5a;
     --white: #ffffff;
     --shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.08);
+    /* НОВЫЙ БОРДОВЫЙ ЦВЕТ */
+    --burgundy: #6e2c2c;
+    --burgundy-light: #8e3c3c;
 }
 
 body {
@@ -288,7 +291,7 @@ h2 {
 
 .service-item:hover {
     transform: translateY(-8px);
-    border-color: var(--terracotta);
+    border-color: var(--burgundy);
 }
 
 .service-item h3 {
@@ -309,7 +312,7 @@ h2 {
     display: inline-block;
     font-size: 1.4rem;
     font-weight: 600;
-    color: var(--terracotta);
+    color: var(--burgundy);
     letter-spacing: 1px;
     margin-top: auto;
     padding-top: 16px;
@@ -320,7 +323,7 @@ h2 {
     width: 45px;
     height: 45px;
     border-radius: 50%;
-    background: var(--terracotta);
+    background: var(--burgundy);
     border: none;
     color: white;
     cursor: pointer;
@@ -332,7 +335,7 @@ h2 {
 }
 
 .services-arrow:hover {
-    background: var(--terracotta-dark);
+    background: var(--burgundy-light);
     transform: scale(1.05);
 }
 
@@ -361,7 +364,7 @@ h2 {
 .services-dot.active {
     width: 24px;
     border-radius: 10px;
-    background: var(--terracotta);
+    background: var(--burgundy);
 }
 
 .about {
@@ -399,7 +402,7 @@ h2 {
 }
 
 .about-list i {
-    color: var(--terracotta);
+    color: var(--burgundy);
     font-size: 1.2rem;
 }
 
@@ -437,7 +440,7 @@ h2 {
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    background: linear-gradient(transparent, rgba(110, 44, 44, 0.9));
     padding: 20px;
     color: white;
     transform: translateY(100%);
@@ -473,7 +476,7 @@ h2 {
 
 .review-quote {
     font-size: 4rem;
-    color: var(--terracotta);
+    color: var(--burgundy);
     font-family: serif;
     line-height: 1;
     margin-bottom: 10px;
@@ -495,7 +498,7 @@ h2 {
 .author-avatar {
     width: 50px;
     height: 50px;
-    background: var(--terracotta);
+    background: var(--burgundy);
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -557,7 +560,7 @@ h2 {
     align-items: center;
     justify-content: center;
     font-size: 1.2rem;
-    color: var(--terracotta);
+    color: var(--burgundy);
 }
 
 .contact-detail h4 {
@@ -594,7 +597,7 @@ h2 {
 
 .form-group input:focus, .form-group textarea:focus {
     outline: none;
-    border-color: var(--terracotta);
+    border-color: var(--burgundy);
 }
 
 .form-group textarea {
@@ -625,7 +628,7 @@ h2 {
 }
 
 .footer-brand .brand-sub {
-    color: var(--terracotta);
+    color: var(--burgundy-light);
 }
 
 .footer-content p {
@@ -699,7 +702,7 @@ h2 {
 }
 
 .modal-close:hover {
-    color: var(--terracotta);
+    color: var(--burgundy);
 }
 
 #imageModal img {
@@ -712,7 +715,7 @@ h2 {
     font-size: 1.8rem;
     margin-bottom: 24px;
     text-align: center;
-    color: var(--terracotta);
+    color: var(--burgundy);
 }
 
 #modalPriceContent .price-category {
@@ -723,7 +726,7 @@ h2 {
     font-size: 1.2rem;
     margin-bottom: 15px;
     padding-bottom: 8px;
-    border-bottom: 2px solid var(--terracotta);
+    border-bottom: 2px solid var(--burgundy);
     display: inline-block;
 }
 
@@ -748,13 +751,13 @@ h2 {
 }
 
 #modalPriceContent .price-item strong {
-    color: var(--terracotta);
+    color: var(--burgundy);
     font-weight: 700;
     font-size: 1rem;
 }
 
 #modalPriceContent .price-item.highlight {
-    background: var(--terracotta);
+    background: var(--burgundy);
 }
 
 #modalPriceContent .price-item.highlight span,
@@ -772,7 +775,7 @@ h2 {
 }
 
 #modalPriceContent .price-info i {
-    color: var(--terracotta);
+    color: var(--burgundy);
     margin-right: 8px;
 }
 
@@ -805,11 +808,11 @@ h2 {
     margin-bottom: 25px;
     font-weight: 600;
     font-family: 'Cormorant Garamond', serif;
-    color: var(--terracotta);
+    color: var(--burgundy);
 }
 
 .cert-form-title i {
-    color: var(--terracotta);
+    color: var(--burgundy);
     margin-right: 10px;
 }
 
@@ -848,9 +851,9 @@ h2 {
 }
 
 .cert-card.selected {
-    border-color: var(--terracotta);
+    border-color: var(--burgundy);
     background: linear-gradient(145deg, #fff, #fef8f2);
-    box-shadow: 0 10px 20px rgba(212, 163, 115, 0.15);
+    box-shadow: 0 10px 20px rgba(110, 44, 44, 0.15);
     transform: translateY(-3px);
 }
 
@@ -861,7 +864,7 @@ h2 {
 .cert-value {
     font-size: 1.3rem;
     font-weight: 700;
-    color: var(--terracotta);
+    color: var(--burgundy);
     font-family: 'Cormorant Garamond', serif;
 }
 
@@ -873,7 +876,7 @@ h2 {
 
 .cert-badge {
     display: inline-block;
-    background: var(--terracotta);
+    background: var(--burgundy);
     color: white;
     font-size: 0.6rem;
     padding: 2px 8px;
@@ -900,8 +903,8 @@ h2 {
 .cert-form-group input:focus,
 .cert-form-group textarea:focus {
     outline: none;
-    border-color: var(--terracotta);
-    box-shadow: 0 0 0 3px rgba(212, 163, 115, 0.1);
+    border-color: var(--burgundy);
+    box-shadow: 0 0 0 3px rgba(110, 44, 44, 0.1);
 }
 
 .cert-form-group input.error {
@@ -920,7 +923,7 @@ h2 {
 .cert-submit-btn {
     width: 100%;
     padding: 14px;
-    background: var(--terracotta);
+    background: var(--burgundy);
     color: white;
     border: none;
     border-radius: 30px;
@@ -936,7 +939,7 @@ h2 {
 }
 
 .cert-submit-btn:hover {
-    background: var(--terracotta-dark);
+    background: var(--burgundy-light);
     transform: scale(1.02);
 }
 
@@ -967,7 +970,7 @@ h2 {
     font-weight: 600;
     margin-bottom: 20px;
     text-align: center;
-    color: var(--terracotta);
+    color: var(--burgundy);
 }
 
 .review-rating {
@@ -1013,13 +1016,13 @@ h2 {
 .review-form-group input:focus,
 .review-form-group textarea:focus {
     outline: none;
-    border-color: var(--terracotta);
+    border-color: var(--burgundy);
 }
 
 .review-submit-btn {
     width: 100%;
     padding: 12px;
-    background: var(--terracotta);
+    background: var(--burgundy);
     color: white;
     border: none;
     border-radius: 30px;
@@ -1029,7 +1032,7 @@ h2 {
 }
 
 .review-submit-btn:hover {
-    background: var(--terracotta-dark);
+    background: var(--burgundy-light);
 }
 
 .admin-reviews-panel {
@@ -1043,7 +1046,7 @@ h2 {
 
 .admin-reviews-panel h4 {
     margin-bottom: 15px;
-    color: var(--terracotta);
+    color: var(--burgundy);
     font-size: 1rem;
 }
 
@@ -1113,7 +1116,7 @@ h2 {
 .admin-toggle-btn {
     background: none;
     border: none;
-    color: var(--terracotta);
+    color: var(--burgundy);
     font-size: 0.8rem;
     cursor: pointer;
     text-decoration: underline;
